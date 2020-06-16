@@ -1,0 +1,473 @@
+/*
+- Styling has been added for active states.
+- It should be clear which section is being viewed while scrolling through the page.
+- When clicking an item from the navigation menu, the link should scroll to the appropriate section (not jump!)
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,600,700|Raleway:400,400i,500&display=swap');
+
+
+/* Base Rules */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: #fffaf0;
+}
+
+/* Typography */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: ;
+  margin: 0.2em 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4.5em;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 2.7em;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2.4em;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.9em;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+  text-align: left;
+  font-size: 1em;
+  margin: 1em 0 0;
+}
+
+li, a {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Font Awesome */
+
+.fas {
+  font-size: 3em;
+  text-align: center;
+  color: #db5461;
+}
+
+/* Grid */
+
+.page-wrapper {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas:
+  "nav"
+  "hero"
+  "newsletter"
+  "benefits"
+  "plan"
+  "contact";
+}
+
+/* Navigation */
+
+header {
+  grid-area: nav;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  height: 100px;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  cursor: pointer;
+  max-width: 100%;
+  height: auto;
+}
+
+.navbar {
+  padding: 0 20px;
+}
+
+@media (min-width: 800px) {
+  header {
+    grid-area: nav;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    height: 60px;
+  }
+
+  .logo-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .navbar {
+    width: 50%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+}
+
+.nav-list li {
+  display: inline-block;
+  padding: 0 20px;
+  letter-spacing: 0.05em;
+}
+
+.nav-list li a {
+  transition: all 0.3s ease 0s;
+  color: white;
+  padding: 12px 20px;
+}
+
+.nav-list li a:hover {
+  color: #000;
+  background-color: #FFF;
+}
+
+
+
+/* Hero Image */
+
+.hero {
+  grid-area: hero;
+  background-image: url("../img/hero-img.jpg");
+  width: 100vw;
+  height: 80vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.hero h1 {
+  color: #fffaf0;
+  margin: 20%;
+}
+
+
+/* newsletter */
+
+.newsletter {
+  grid-area: newsletter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8aa29e;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+
+.newsletter-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.newsletter-element input[type=text] {
+  width: 200px;
+}
+
+.newsletter-element input[type=text], input[type=submit] {
+  text-align: center;
+  padding: 12px;
+  margin: 15px;
+  border: 1px solid #fffaf0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.newsletter-element input[type=submit] {
+  width: 200px;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #e54b4b;
+  border: 2px solid #e54b4b;
+  color: #fffaf0;
+  transition: all 0.3s;
+  border: none;
+}
+
+.newsletter-element input[type=submit]:hover {
+  background-color: transparent;
+  border: 2px solid #e54b4b;
+  color: #e54b4b;
+  transform: scale(0.9);
+}
+
+@media (min-width: 800px) {
+  .newsletter-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+}
+
+/* Benefits */
+
+#benefits {
+  grid-area: benefits;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#benefits h2 {
+  width: 100%;
+}
+
+.benefits-flex {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.benefits-card {
+  background-color: white;
+  width: 100%;
+  max-width: 400px;
+  height: 230px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 20px 30px;
+  margin: 20px;
+}
+
+.benefits-icon {
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  .benefits-flex {
+    flex-flow: row wrap;
+  }
+  .benefits-card {
+    width: 30%;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 999px) {
+  .benefits-flex h3 {
+    font-size: 2em;
+  }
+  .fas {
+    font-size: 2.5em;
+  }
+  .benefits-card {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .benefits-card {
+    height: 250px;
+  }
+}
+
+#plan {
+  grid-area: plan;
+  width: 100vw;
+  height: 80vh;
+  background-color: black;
+  display: flex;
+}
+
+.plan-container {
+  width: 100%;
+  padding: 30px;
+  margin: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#plan h2 {
+  color: white;
+  max-width: 500px;
+}
+
+.book-img {
+  height: 60%;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 750px) {
+  #plan {
+    background-image: url("../img/background-img.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+  .plan-container {
+    width: 50%;
+    padding: 30px;
+    margin: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+}
+
+/* Contact */
+
+#contact {
+  grid-area: contact;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+#contact h3 {
+  text-align: center;
+}
+
+.contact-outer {
+  width: 100%;
+  padding: 20px;
+}
+
+@media (min-width: 800px) {
+  .contact-outer {
+    width: 50%;
+    text-align: center;
+  }
+}
+
+.contact-inner {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 20px;
+  width: 100%
+}
+
+.contact-inner input[type=text] {
+  width: 100%;
+}
+
+.contact-inner input[type=text], input[type=submit] {
+  padding: 12px;
+  margin: 8px 0px;
+  border: 1px solid #fffaf0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.contact-inner input[type=submit] {
+  width: 200px;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #e54b4b;
+  border: 2px solid #e54b4b;
+  color: #fffaf0;
+  transition: all 0.3s;
+  border: none;
+}
+
+.contact-inner input[type=submit]:hover {
+  background-color: transparent;
+  border: 2px solid #e54b4b;
+  color: #e54b4b;
+  transform: scale(0.9);
+}
+
+.contact-inner textarea {
+  height: 150px;
+  width: 100%;
+}
+
+
+footer {
+  padding: 20px;
+  background-color: #8aa29e;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  background-color: red;
+}
