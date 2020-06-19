@@ -8,9 +8,9 @@
  ** JS Standard: ESlint
 ******/
 
-/***
+/****
  ** Define all the Global Variables
-***/
+****/
 
 const navbar = document.getElementsByTagName("nav"); // <nav>
 const navList = document.querySelector(".nav-list"); // <ul class="nav-list">
