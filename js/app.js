@@ -1,23 +1,16 @@
-
-/**
- *
+/*****
  * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
+ * Exercise programmatically builds navigation.
  * scrolls to anchors from navigation,
  * and highlights section in viewport upon scrolling.
- *
- * Dependencies: None
- *
- * JS Version: ES2015/ES6
- *
- * JS Standard: ESlint
- *
-*/
+ ** Dependencies: None
+ ** JS Version: ES2015/ES6
+ ** JS Standard: ESlint
+******/
 
-/**
- * Define Global Variables
- *
-*/
+/***
+ ** Define all the Global Variables
+***/
 
 const navbar = document.getElementsByTagName("nav"); // <nav>
 const navList = document.querySelector(".nav-list"); // <ul class="nav-list">
@@ -50,17 +43,18 @@ function init(){
 };
 
 
-/*
-Add class 'active' to section when near top of viewport
-My thoughts: 1. Add Event Listener for scrolling
-2. Test if is in viewport.
-3. If so, add a class or custom behaviour activeSection.classList.add("active");
-*/
+/*****
+Include class 'dynamic' to segment when close to top of viewport 
+My contemplations: 1. Include Event Listener for looking over 
+2. Test if is in viewport. 
+3. Provided that this is true
+include a class or custom conduct activeSection.classList.add("active");
+******/
 
 window.addEventListener("scroll", addActiveClass)
 
-function addActiveClass(event) {
-  // As seen here: https://vanillajstoolkit.com/helpers/isinviewport/
+function addActiveClass(_event) {
+  // As you can see here: https://vanillajstoolkit.com/helpers/isinviewport/
   var isInViewport = function (elem) {
   var bounding = elem.getBoundingClientRect();
     return (
@@ -72,6 +66,6 @@ function addActiveClass(event) {
   };
   if (isInViewport === true) {
     elem.classList.add("active");
-    // active class in style.css
+    // there is an active class in style.css
   }
 }
