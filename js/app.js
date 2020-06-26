@@ -1,3 +1,8 @@
+/**
+ * 
+ * Manipulating the DOM exercise.
+ * Exercise programmatically builds navigation
+=======
 /*****
  * Manipulating the DOM exercise.
  * Exercise programmatically builds navigation.
@@ -6,66 +11,73 @@
  ** Dependencies: None
  ** JS Version: ES2015/ES6
  ** JS Standard: ESlint
-******/
+
+**/
+// /**
+//  * Define Global Variables
+//  *
+// */
+const sections = document.querySelectorAll('section');
+const navList = document.querySelector('#navbar__list');
+
+//build the nav
+function navigation() {
+	for (let item of sections) {
+		let section = document.createElement('li');
+		// let anchor = document.createElement('a');
+		section.className = 'menu__link';
+		// anchor.href = `#${item.id}`;
+		section.dataset.nav = item.id;
+		section.innerText = item.dataset.nav;
+		// section.appendChild(anchor);
+		navList.appendChild(section);
+	}
+}
+
 
 /****
  ** Define all the Global Variables
 ****/
 
-const navbar = document.getElementsByTagName("nav"); // <nav>
-const navList = document.querySelector(".nav-list"); // <ul class="nav-list">
-const sections = document.getElementsByTagName("section");
+//Add class 'active' to section when near top of viewport
 
-document.addEventListener('DOMContentLoaded', init);
-
-function init(){
-  for (i = 0; i < sections.length; i++) {
-    event.preventDefault();
-    const currentSection = sections[i];
-    if (currentSection.hasAttribute("data-nav")) {
-      let link = document.createElement("a");
-      let linkTitle = currentSection.getAttribute('data-nav');
-      let linkText = document.createTextNode(linkTitle);
-      link.appendChild(linkText);
-      let currentSectionId = currentSection.getAttribute('id');
-      let linkItem = document.createElement("li");
-      linkItem.classList.add("nav-link");
-      let section_id = sections[i].getAttribute('id');
-      linkItem.onclick = function() {
-          document.getElementById(section_id).scrollIntoView({
-              behavior: 'smooth'
-          });
-      };
-      linkItem.appendChild(link);
-      navList.appendChild(linkItem);
-    }
-  }
-};
-
-
-/*****
-Include class 'dynamic' to segment when close to top of viewport 
-My contemplations: 1. Include Event Listener for looking over 
-2. Test if is in viewport. 
-3. Provided that this is true
-include a class or custom conduct activeSection.classList.add("active");
-******/
-
-window.addEventListener("scroll", addActiveClass)
-
-function addActiveClass(_event) {
-  // As you can see here: https://vanillajstoolkit.com/helpers/isinviewport/
-  var isInViewport = function (elem) {
-  var bounding = elem.getBoundingClientRect();
-    return (
-        bounding.top >= 0 &&
-        bounding.left >= 0 &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
-  if (isInViewport === true) {
-    elem.classList.add("active");
-    // there is an active class in style.css
-  }
+function makeActive() {
+	for (const section of sections) {
+		const box = section.getBoundingClientRect();
+		const active = document.querySelector('li[data-nav="' + section.id + '"]');
+		if (box.top <= 200 && box.bottom >= 200) {
+			// Apply active state on the current section and the corresponding Nav link.
+			section.classList.add('your-active-class');
+			//Add "active" class to the Nav link which have a class same as id of the current section
+			active.classList.add('active__link');
+		} else {
+			// Remove active state from other section and corresponding Nav link.
+			section.classList.remove('your-active-class');
+			//Remove "active" class from the Nav link which have a class same as id of current section
+			active.classList.remove('active__link');
+		}
+	}
 }
+
+//Build menu
+navigation();
+
+// Scroll to section on link click
+
+function scroll() {
+	navList.addEventListener('click', (e) => {
+		e.preventDefault();
+		document.querySelector('#' + event.target.dataset.nav).scrollIntoView({
+			behavior: 'smooth',
+			offsetTop: 20,
+			block: 'end'
+		});
+	});
+}
+
+scroll();
+
+// Set sections as active
+window.addEventListener('scroll', function() {
+	makeActive();
+});
